@@ -12,7 +12,7 @@ navLinks.forEach(link => {
     const targetSection = document.getElementById(targetId);
 
     window.scrollTo({
-      top: targetSection.offsetTop - 80, 
+      top: targetSection.offsetTop - 80,
       behavior: 'smooth'
     });
 
@@ -32,7 +32,7 @@ window.addEventListener('scroll', () => {
     }
   });
 
-  if(window.scrollY > 500){
+  if (window.scrollY > 500) {
     backToTop.style.display = "flex";
   } else {
     backToTop.style.display = "none";
@@ -43,7 +43,7 @@ window.addEventListener('scroll', () => {
     const elementTop = el.getBoundingClientRect().top;
     const revealPoint = 150;
 
-    if(elementTop < windowHeight - revealPoint){
+    if (elementTop < windowHeight - revealPoint) {
       el.classList.add('active-reveal');
     }
   });
@@ -87,32 +87,32 @@ cards.forEach(card => {
   card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0) scale(1)');
 });
 
-const typingElement = document.querySelector('.info-home h3'); 
-const words = ["Full Stack Developer",  "React Developer"];
+const typingElement = document.querySelector('.info-home h3');
+const words = ["Java Developer", "Full Stack Developer"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let typingSpeed = 100;
 
 function type() {
-    const currentWord = words[wordIndex];
-    let displayedText = currentWord.substring(0, charIndex);
-    
-    typingElement.innerHTML = displayedText + '<span class="cursor">|</span>';
+  const currentWord = words[wordIndex];
+  let displayedText = currentWord.substring(0, charIndex);
 
-    if (!isDeleting && charIndex < currentWord.length) {
-        charIndex++;
-        setTimeout(type, typingSpeed);
-    } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(type, typingSpeed / 2);
-    } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            wordIndex = (wordIndex + 1) % words.length;
-        }
-        setTimeout(type, 1000);
+  typingElement.innerHTML = displayedText + '<span class="cursor">|</span>';
+
+  if (!isDeleting && charIndex < currentWord.length) {
+    charIndex++;
+    setTimeout(type, typingSpeed);
+  } else if (isDeleting && charIndex > 0) {
+    charIndex--;
+    setTimeout(type, typingSpeed / 2);
+  } else {
+    isDeleting = !isDeleting;
+    if (!isDeleting) {
+      wordIndex = (wordIndex + 1) % words.length;
     }
+    setTimeout(type, 1000);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', type);
@@ -125,23 +125,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainPage = document.getElementById("main-page");
   const loadingScreen = document.getElementById("loading-screen");
 
-  function showElement(element, delay=0){
+  function showElement(element, delay = 0) {
     setTimeout(() => {
       element.classList.remove("hidden");
       element.classList.add("fall");
     }, delay);
   }
 
-  showElement(loadingText, 0);          
-  showElement(mainIcon, 800);         
+  showElement(loadingText, 0);
+  showElement(mainIcon, 800);
   subIcons.forEach((icon, idx) => {
-    showElement(icon, 1600 + idx*400);  
+    showElement(icon, 1600 + idx * 400);
   });
-  showElement(designerText, 2800);    
+  showElement(designerText, 2800);
 
   setTimeout(() => {
     loadingScreen.style.opacity = '0';
-    setTimeout(() => loadingScreen.style.display='none', 500);
+    setTimeout(() => loadingScreen.style.display = 'none', 500);
     mainPage.classList.add("visible");
   }, 4000);
 });
